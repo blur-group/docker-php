@@ -64,7 +64,7 @@ class NetworkConfigNormalizer extends SerializerAwareNormalizer implements Denor
             }
             $object->setNetworks($values);
         }
-        if (property_exists($data, 'Ports')) {
+        if (property_exists($data, 'Ports') && isset($data->{'Ports'})) {
             $values_1 = new \ArrayObject([], \ArrayObject::ARRAY_AS_PROPS);
             foreach ($data->{'Ports'} as $key_1 => $value_1) {
                 $value_2 = $value_1;

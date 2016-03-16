@@ -39,11 +39,12 @@ class PortBindingNormalizer extends SerializerAwareNormalizer implements Denorma
         if (!isset($context['rootSchema'])) {
             $context['rootSchema'] = $object;
         }
-        if (property_exists($data, 'HostPort')) {
-            $object->setHostPort($data->{'HostPort'});
+        $dataFirst = is_array($data) ? $data[0] : $data;
+        if (property_exists($dataFirst, 'HostPort')) {
+            $object->setHostPort($dataFirst->{'HostPort'});
         }
-        if (property_exists($data, 'HostIp')) {
-            $object->setHostIp($data->{'HostIp'});
+        if (property_exists($dataFirst, 'HostIp')) {
+            $object->setHostIp($dataFirst->{'HostIp'});
         }
 
         return $object;
